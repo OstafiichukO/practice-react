@@ -2,24 +2,28 @@ import React from "react";
 import "./Counter.css";
 
 class Counter extends React.Component {
+  static defaultProps = {
+    initialValue: 0,
+  };
+
+  static propTypes = {
+    //
+  };
+
   state = {
-    value: 0,
+    value: this.props.initialValue,
   };
 
   handleIncrement = () => {
-    this.setState((prevState) => {
-      return {
-        value: prevState.value + 1,
-      };
-    });
+    this.setState((prevState) => ({
+      value: prevState.value + 1,
+    }));
   };
 
   handleDecrement = () => {
-    this.setState((prevState) => {
-      return {
-        value: prevState.value - 1,
-      };
-    });
+    this.setState((prevState) => ({
+      value: prevState.value - 1,
+    }));
   };
 
   render() {
