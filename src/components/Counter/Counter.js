@@ -2,15 +2,35 @@ import React from "react";
 import "./Counter.css";
 
 class Counter extends React.Component {
+  state = {
+    value: 0,
+  };
+
+  handleIncrement = () => {
+    this.setState((prevState) => {
+      return {
+        value: prevState.value + 1,
+      };
+    });
+  };
+
+  handleDecrement = () => {
+    this.setState((prevState) => {
+      return {
+        value: prevState.value - 1,
+      };
+    });
+  };
+
   render() {
     return (
       <div className="Counter">
-        <span className="Counter__value">0</span>
+        <span className="Counter__value">{this.state.value}</span>
         <div className="Counter__controls">
-          <button type="button" onClick={() => console.log("+1")}>
+          <button type="button" onClick={this.handleIncrement}>
             Увеличить на 1
           </button>
-          <button type="button" onClick={() => console.log("+2")}>
+          <button type="button" onClick={this.handleDecrement}>
             Уменьшить на 1
           </button>
         </div>
